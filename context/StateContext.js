@@ -12,6 +12,7 @@ export const StateContext = ({ children }) => {
 
   let foundProduct;
   let index;
+  
 
   const onAdd = (product, quantity) => {
     const checkProductInCart = cartItems.find(
@@ -39,6 +40,7 @@ export const StateContext = ({ children }) => {
   };
 
   const onRemove = (product) => {
+    console.log(cartItems);
       foundProduct = cartItems.find((item) => item._id === product._id);
       const newCartItems = cartItems.filter((item) => item._id !== product._id);
       setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price * foundProduct.quantity);
@@ -87,7 +89,11 @@ export const StateContext = ({ children }) => {
         onAdd,
         setShowCart,
         toggleCartItemQuantity,
-        onRemove
+        onRemove,
+        setCartItems,
+        setTotalPrice,
+        setTotalQuantities
+
       }}
     >
       {children} {/* for not rendering but wrapping with context provider */}
