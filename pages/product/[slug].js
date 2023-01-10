@@ -12,7 +12,12 @@ import { useStateContext } from "../../context/StateContext";
 const ProductDetails = ({ product, products }) => {
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
-  const { decQty, incQty, qty, onAdd } = useStateContext();
+  const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
+  const handleBuyNow = () => {
+    onAdd(product, qty);
+    setShowCart(true);
+  }
+
   return (
     <div>
       <div className="product-detail-container">
@@ -25,15 +30,16 @@ const ProductDetails = ({ product, products }) => {
           </div>
           <div className="small-images-container">
             {image?.map((item, i) => (
+              
               <img
                 key={i}
                 src={urlFor(item)}
                 className={
                   i === index ? "small-image selected-image" : "small-image"
-                }
-                
+                }            
                 onMouseEnter={() => setIndex(i)}
               />
+              
             ))}
           </div>
         </div>
@@ -71,7 +77,7 @@ const ProductDetails = ({ product, products }) => {
             <button type="button" className="add-to-cart" onClick={() => onAdd(product, qty)}>
               Add to Cart
             </button>
-            <button type="button" className="buy-now" onClick="">
+            <button type="button" className="buy-now" onClick={handleBuyNow}>
               Buy Now
             </button>
           </div>
@@ -81,7 +87,7 @@ const ProductDetails = ({ product, products }) => {
       <div className="maylike-products-wrapper">
         <h2>You may also like</h2>
         <div className="marquee">
-          <div className="maylike-products-container track">
+          <div onClick={() => setIndex(0)}  className="maylike-products-container track">
             {products.map((item) => (
               <Product key={item._id} product={item} />
             ))}
@@ -99,9 +105,13 @@ export const getStaticPaths = async () => {
     } `;
  
   const product = await client.fetch(query);
+ 
   const paths = product.map((product) => ({
     params: { slug: product.slug.current },
   }));
+  
+  
+  
   return {
     paths,
     fallback: "blocking",
@@ -111,9 +121,11 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params: { slug } }) => {
   const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
   const productsQuery = '*[_type == "product"]';
+
   
   const product = await client.fetch(query);
   const products = await client.fetch(productsQuery);
+  
 
   return {
     props: { products, product },
