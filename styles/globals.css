@@ -129,7 +129,7 @@ span.text-red {
 }
 
 .hero-banner-container {
-  padding: 100px 40px;
+  padding: 2rem 4rem;
   background-image: url(../assets/hero_background.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -137,7 +137,7 @@ span.text-red {
   border-radius: 15px;
   position: relative;
   height: 500px;
-  line-height: 0.9;
+  line-height: 1;
   width: 100%;
 }
 .hero-banner-container .tote-bag {
@@ -153,7 +153,6 @@ span.text-red {
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
-  z-index: 10000 !important;
 }
 
 .hero-banner-container h3 {
@@ -171,11 +170,13 @@ span.text-red {
 .hero-banner-container p {
   color: #4185f4;
 }
+
 .hero-banner-image {
   z-index: 0;
   position: absolute;
-  top: 0%;
-  right: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+
   width: 450px;
   height: 450px;
 }
@@ -192,7 +193,8 @@ span.text-red {
 }
 .desc p {
   color: #3f85f5;
-  font-weight: 100;
+
+  font-weight: 700;
   text-align: end;
 }
 .desc h5 {
@@ -216,11 +218,11 @@ span.text-red {
   font-weight: 200;
 }
 .footer-banner-container {
-  padding: 100px 40px;
+  padding: 2rem 4rem;
   background-image: radial-gradient(#3f85f5, #d0fb49 70%);
   border-radius: 15px;
   position: relative;
-  height: 400px;
+  height: 300px;
   line-height: 1;
   color: white;
   width: 100%;
@@ -230,17 +232,34 @@ span.text-red {
   display: flex;
   justify-content: space-between;
 }
+.left {
+  z-index: 1;
+}
+
+.left p {
+  text-align: center;
+}
+
 .banner-desc button {
   border-radius: 15px;
   padding: 10px 16px;
   background-color: white;
   color: #d0fb49;
   border: none;
-  margin-top: 40px;
+  margin-top: 80%;
+  margin-left: 25%;
+
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 700;
   cursor: pointer;
+  white-space: nowrap;
 }
+
+.banner-desc button:hover {
+  background-color: #4185f4;
+  color: #d0fb49;
+}
+
 .banner-desc .left h3 {
   font-weight: 900;
   font-size: 80px;
@@ -250,17 +269,15 @@ span.text-red {
   margin: 18px;
 }
 .footer-banner-image {
-  height: 450px;
-  width: 450px;
-  z-index: 0;
+  width: 350px;
+  height: 350px;
   position: absolute;
-  top: -30px;
-  left: 250px;
-  
- 
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0;
+  margin: 0;
 }
 
-  
 .banner-desc .right {
   z-index: 1;
   line-height: 1.4;
@@ -283,7 +300,7 @@ span.text-red {
   right: 0;
   top: 0;
   z-index: 100;
-  /* will-change: transform; */
+
   transition: all 1s ease-in-out;
 }
 .cart-container {
@@ -645,24 +662,18 @@ span.text-red {
 
 @media screen and (max-width: 800px) {
   .hero-banner-container {
-    height: 560px;
+    height: 400px;
   }
   .hero-banner-image {
-    width: 300px;
-    height: 300px;
-    top: 10%;
-    right: 10%;
+    width: 350px;
+    height: 350px;
+    top: 30%;
   }
-  .footer-banner-container {
-    height: 560px;
-    margin-top: 80px;
-  }
+
   .footer-banner-image {
     z-index: 0;
-    width: 450px;
-    left: 10%;
-    top: 10%;
-    height: 450px;
+    width: 250px;
+    height: 250px;
   }
   .banner-desc .left h3 {
     font-weight: 900;
@@ -670,25 +681,7 @@ span.text-red {
     margin-left: 5px;
   }
   .banner-desc .left p {
-   
     margin: 18px;
-  }
-  .banner-desc .right h3 {
-    z-index: 50;
-    font-size: 45px;
-  }
-  .banner-desc .right p {
-   
-    font-size: 18px;
-  }
-  .banner-desc .right .company-desc {
-    
-    font-size: 14px;
-  }
-  .banner-desc {
-    
-    flex-wrap: wrap;
-    gap: 20px;
   }
 
   .hero-banner-styling {
@@ -707,7 +700,6 @@ span.text-red {
   }
   .hero-banner-container button {
     margin-top: 90px;
-    /* z-index: 10000; */
   }
   .desc {
     bottom: center;
