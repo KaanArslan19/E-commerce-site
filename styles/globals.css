@@ -650,6 +650,18 @@ span.text-red {
   justify-content: flex-start;
   align-items: center;
 }
+.hero-button {
+  z-index: 1;
+}
+
+.hero-button button {
+  font-weight: 700;
+}
+
+.hero-button button:hover {
+  background-color: #4185f4;
+  color: #d0fb49;
+}
 
 .hero-second-row {
   z-index: 1;
